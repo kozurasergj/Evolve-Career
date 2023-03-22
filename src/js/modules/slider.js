@@ -14,9 +14,20 @@ export class Slider {
     if (n < 1) {
       this.slideIndex = this.slides.length;
     }
-    
+
+    if (this.showBlockByTime && n === 3) {
+      this.showBlockByTime.style.opacity = '0';
+      this.showBlockByTime.classList.add('animated');
+      setTimeout(() => {
+        this.showBlockByTime.style.opacity = '1';
+        this.showBlockByTime.classList.add('slideInUp');
+      }, 3000)
+    } else {
+      this.showBlockByTime.classList.remove('slideInUp');
+    }
+
     for (let slide of this.slides) {
-        slide.style.display = 'none';
+      slide.style.display = 'none';
     }
 
     this.slides[this.slideIndex - 1].style.display = 'block';
@@ -27,6 +38,8 @@ export class Slider {
   }
 
   render() {
+    this.showBlockByTime = document.querySelector('.hanson');
+
     this.btns.forEach(item => {
       item.addEventListener('click', () => {
         this.plusSlides(1);
