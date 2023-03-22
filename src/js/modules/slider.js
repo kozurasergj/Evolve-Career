@@ -26,9 +26,10 @@ export class Slider {
       this.showBlockByTime.classList.remove('slideInUp');
     }
 
-    for (let slide of this.slides) {
+    Array.from(this.slides).forEach(slide => {
       slide.style.display = 'none';
-    }
+    });
+
 
     this.slides[this.slideIndex - 1].style.display = 'block';
   }
