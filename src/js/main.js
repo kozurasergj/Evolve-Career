@@ -1,4 +1,4 @@
-import { VideoPlayer, DifferenceEdu } from './modules';
+import { VideoPlayer, DifferenceEdu, Form } from './modules';
 import { MainSlider } from './modules/slider/slider-main';
 import { MiniSlider } from './modules/slider/slider-mini';
 
@@ -37,5 +37,5 @@ window.addEventListener('DOMContentLoaded', () => {
 
   new DifferenceEdu('.officerold', '.officernew', '.officer__card-item').init();
 
-
+  new Form('form').init();
 });
