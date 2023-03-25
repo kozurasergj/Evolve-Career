@@ -68,12 +68,14 @@ export class Form {
     });
   };
 
-  async postData(url, data) {
-    const request = await fetch(url, {
+  async postData(data) {
+    const request = await fetch('http://localhost:3002/api/data', {
       method: 'POST',
-      body: JSON.stringify(data),
-      headers: { "Content-Type": "application/json" }
-    });
+      // headers: {
+      //   " Content-Type": "application/x-www-form-urlencoded"
+      // },
+      body: data,
+    })
     if (!request.ok) {
       throw new Error(`Ошибка по адресу ${url}, статус ошибки ${response.status}`);
     }
@@ -98,9 +100,10 @@ export class Form {
           form.parentNode.appendChild(statusMessage);
         }
         statusMessage.textContent = this.message.loading;
+
         const formData = new FormData(form);
 
-        this.postData(this.path, formData)
+        this.postData(formData)
           .then(response => {
             console.log(response);
             statusMessage.textContent = this.message.success;
