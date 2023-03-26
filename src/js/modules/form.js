@@ -6,7 +6,6 @@ export class Form {
       success: 'Спасибо! Скоро мы с вами свяжемся',
       failure: 'Что-то пошло не так',
     };
-    this.path = 'https://dummyjson.com/users/add';
   }
 
   clearInputs() {
@@ -69,11 +68,8 @@ export class Form {
   };
 
   async postData(data) {
-    const request = await fetch('http://localhost:3002/api/data', {
+    const request = await fetch('http://localhost:7777/api/data', {
       method: 'POST',
-      // headers: {
-      //   " Content-Type": "application/x-www-form-urlencoded"
-      // },
       body: data,
     })
     if (!request.ok) {
@@ -120,5 +116,4 @@ export class Form {
       });
     });
   }
-
 }
