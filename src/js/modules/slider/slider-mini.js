@@ -7,7 +7,7 @@ export class MiniSlider extends Slider {
 
   decorizeSlides() {
     if (this.slides) {
-      Array.from(this.slides || []).forEach(slide => {
+      Array.from(this.slides).forEach(slide => {
         slide.classList.remove(this.activeClass);
         if (this.animate) {
           slide.querySelector('.card__title').style.opacity = '0.4';
@@ -15,7 +15,7 @@ export class MiniSlider extends Slider {
         }
       });
 
-      if ((!this.slides[0].closest('button'))) {
+      if (!this.slides[0].closest('button')) {
         this.slides[0].classList.add(this.activeClass);
       }
 
@@ -46,7 +46,6 @@ export class MiniSlider extends Slider {
 
   bindTriggers() {
     this.next?.addEventListener('click', () => this.nextSlideByTime());
-
     this.prev?.addEventListener('click', () => {
 
       for (let i = this.slides.length - 1; i > 0; i--) {
@@ -57,8 +56,6 @@ export class MiniSlider extends Slider {
           break;
         }
       }
-
-
     });
   }
 
@@ -74,7 +71,6 @@ export class MiniSlider extends Slider {
 
     this.bindTriggers();
     this.decorizeSlides();
-
     if (this.autoplay) {
       setInterval(() => this.nextSlideByTime(), 5000);
     }
