@@ -2,14 +2,14 @@ export class DifferenceEdu {
   constructor(oldOfficer, newOfficer, items) {
     this.oldOfficer = document.querySelector(oldOfficer);
     this.newOfficer = document.querySelector(newOfficer);
-    this.oldItems = this.oldOfficer.querySelectorAll(items);
-    this.newItems = this.newOfficer.querySelectorAll(items);
+    this.oldItems = this.oldOfficer?.querySelectorAll(items);
+    this.newItems = this.newOfficer?.querySelectorAll(items);
     this.oldCounter = 0;
     this.newCounter = 0;
   }
 
   bindTriggers(container, items, counter) {
-    container.querySelector('.plus').addEventListener('click', () => {
+    container?.querySelector('.plus')?.addEventListener('click', () => {
       if (counter !== items.length - 2) {
         items[counter].style.display = 'flex';
         items[counter].classList.add('animated', 'fadeIn');
@@ -23,11 +23,13 @@ export class DifferenceEdu {
   }
 
   hideItems(blocksHidden) {
-    blocksHidden.forEach((el, i, arr) => {
-      if (i !== arr.length - 1) {
-        el.style.display = 'none';
-      }
-    });
+    if (blocksHidden) {
+      blocksHidden.forEach((el, i, arr) => {
+        if (i !== arr.length - 1) {
+          el.style.display = 'none';
+        }
+      });
+    }
   }
 
   init() {

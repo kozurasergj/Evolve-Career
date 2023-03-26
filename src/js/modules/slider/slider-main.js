@@ -7,31 +7,30 @@ export class MainSlider extends Slider {
 
 
   showSlides(n) {
-    if (n > this.slides.length) {
-      this.slideIndex = 1;
+    if (this.slides) {
+
+      if (n > this.slides?.length) {
+        this.slideIndex = 1;
+      }
+      if (n < 1) {
+        this.slideIndex = this.slides.length;
+      }
+
+      if (this.showBlockByTime && n === 3) {
+        this.showBlockByTime.style.opacity = '0';
+        this.showBlockByTime.classList.add('animated');
+        setTimeout(() => {
+          this.showBlockByTime.style.opacity = '1';
+          this.showBlockByTime.classList.add('slideInUp');
+        }, 3000)
+      } else {
+        this.showBlockByTime?.classList.remove('slideInUp');
+      }
+      Array.from(this.slides || []).forEach(slide => {
+        slide.style.display = 'none';
+      });
+      this.slides[this.slideIndex - 1].style.display = 'block';
     }
-
-    if (n < 1) {
-      this.slideIndex = this.slides.length;
-    }
-
-    if (this.showBlockByTime && n === 3) {
-      this.showBlockByTime.style.opacity = '0';
-      this.showBlockByTime.classList.add('animated');
-      setTimeout(() => {
-        this.showBlockByTime.style.opacity = '1';
-        this.showBlockByTime.classList.add('slideInUp');
-      }, 3000)
-    } else {
-      this.showBlockByTime.classList.remove('slideInUp');
-    }
-
-    Array.from(this.slides).forEach(slide => {
-      slide.style.display = 'none';
-    });
-
-
-    this.slides[this.slideIndex - 1].style.display = 'block';
   }
 
   plusSlides(n) {
