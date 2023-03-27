@@ -40,6 +40,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }).init();
 
   new VideoPlayer('.showup .play', '.overlay').init();
+  new VideoPlayer('.module__video-item .play', '.overlay').init();
 
   new DifferenceEdu('.officerold', '.officernew', '.officer__card-item').init();
 
