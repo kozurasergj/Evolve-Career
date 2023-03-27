@@ -1,4 +1,4 @@
-import { VideoPlayer, DifferenceEdu, Form,ShowInfo } from './modules';
+import { VideoPlayer, DifferenceEdu, Form, ShowInfo,Download } from './modules';
 import { MainSlider } from './modules/slider/slider-main';
 import { MiniSlider } from './modules/slider/slider-mini';
 
@@ -47,4 +47,6 @@ window.addEventListener('DOMContentLoaded', () => {
   new Form('.form').init();
 
   new ShowInfo('.module__info-show .plus').init();
+
+  new Download('.download').init();
 });
