@@ -54,17 +54,15 @@ export class VideoPlayer {
     const textPlayCircle = blockedElem.querySelector('.play__text');
     const playBtn = this.activeBtn.querySelector('svg').cloneNode(true);
     const playCircleVideo = blockedElem.querySelector('.play__circle');
-    if (state.data === 0) {
-      if (playCircleVideo.classList.contains('closed')) {
-        playCircleVideo.classList.remove('closed');
-        blockedElem.querySelector('svg').remove();
-        playCircleVideo.appendChild(playBtn);
-        textPlayCircle.textContent = 'Play video';
-        textPlayCircle.classList.remove('.attention');
-        blockedElem.style.opacity = 1;
-        blockedElem.style.filter = 'none';
-        blockedElem?.setAttribute('data-disabled', 'false');
-      }
+    if ((state.data === 0) && (playCircleVideo.classList.contains('closed'))) {
+      playCircleVideo.classList.remove('closed');
+      blockedElem.querySelector('svg').remove();
+      playCircleVideo.appendChild(playBtn);
+      textPlayCircle.textContent = 'Play video';
+      textPlayCircle.classList.remove('.attention');
+      blockedElem.style.opacity = 1;
+      blockedElem.style.filter = 'none';
+      blockedElem?.setAttribute('data-disabled', 'false');
     }
   }
 
